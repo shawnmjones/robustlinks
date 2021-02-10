@@ -288,6 +288,9 @@ var RobustLinks = (function() {
 
         robustify: function() {
             var RLRestrictedRegexp = new RegExp('(?:'+RLWebArchiveBaseUriToExclude.join(')|(?:')+')');
+            
+            console.log("inside robustify function, window.location.href = " + window.location.href);
+            console.log("inside robustify function, window.location.origin = " + window.location.origin);
 
             if (RLRestrictedRegexp.test(window.location.href)) {
                 console.log("Detected web archive, refusing to create Robust Link menus");
@@ -301,5 +304,7 @@ var RobustLinks = (function() {
 
 // Apply the script at the end of the loading.
 document.addEventListener('DOMContentLoaded', function() {
+    console.log("inside DOMContentLoaded event listener callback, window.location.href = " + window.location.href);
+    console.log("inside DOMContentLoaded event listener callback, window.location.origin = " + window.location.origin);
     RobustLinks.robustify();
 }, false);
